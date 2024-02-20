@@ -1,0 +1,37 @@
+import { createStore } from "redux";
+
+const intialState={
+    movies:[],
+    name:'',
+    detail:[],
+    feeling:'',
+    actors:[{"id":1,'Name':"Tom Hanks","title":"Lady Bird","posterURL":"https://m.media-amazon.com/images/M/MV5BODhkZGE0NDQtZDc0Zi00YmQ4LWJiNmUtYTY1OGM1ODRmNGVkXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg","imdbId":"tt4925292"},{"id":2,'Name':"Tom Hanks","title":"BlacKkKlansman","posterURL":"https://m.media-amazon.com/images/M/MV5BMjUyOTE1NjI0OF5BMl5BanBnXkFtZTgwMTM4ODQ5NTM@._V1_SX300.jpg","imdbId":"tt7349662"},{"id":3,'Name':"Tom Hanks","title":"It Happened One Night","posterURL":"https://m.media-amazon.com/images/M/MV5BZmViYmM5OTYtNGQ4Ny00YjQyLThiNjEtYTE4MGZhZTNmZjcyL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg","imdbId":"tt0025316"},{"id":4,'Name':"Tom Hanks","title":"Eighth Grade","posterURL":"https://m.media-amazon.com/images/M/MV5BMzVlYzgxYjAtYzhhZi00MDc1LTlkZDMtMTRhZWI0MTg5YTRjXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SX300.jpg","imdbId":"tt7014006"},{"id":5,'Name':"Tom Hanks","title":"Coco","posterURL":"https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_SX300.jpg","imdbId":"tt2380307"},{"id":6,'Name':"Leonardo Decarpio","title":"The Big Sick","posterURL":"https://m.media-amazon.com/images/M/MV5BZWM4YzZjOTEtZmU5ZS00ZTRkLWFiNjAtZTEwNzIzMDM5MjdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SX300.jpg","imdbId":"tt5462602"},{"id":7,'Name':"Leonardo Decarpio","title":"Modern Times","posterURL":"https://m.media-amazon.com/images/M/MV5BYjJiZjMzYzktNjU0NS00OTkxLWEwYzItYzdhYWJjN2QzMTRlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg","imdbId":"tt0027977"},{"id":8,'Name':"Leonardo Decarpio","title":"Singin' in the Rain","posterURL":"https://m.media-amazon.com/images/M/MV5BMWUyNjQ5MTAtNDJhYS00MWQ0LTk2ZTAtZmE4MWNlMjMwMzg3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg","imdbId":"tt0045152"},{"id":9,'Name':"Leonardo Decarpio","title":"A Hard Day's Night","posterURL":"https://m.media-amazon.com/images/M/MV5BZjQyMGUwNzAtNTc2MC00Y2FjLThlM2ItZGRjNzM0OWVmZGYyXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg","imdbId":"tt0058182"},{"id":10,'Name':"Leonardo Decarpio","title":"La La Land","posterURL":"https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg","imdbId":"tt3783958"},{"id":11,'Name':"Brad Pitt","title":"Zootopia","posterURL":"https://m.media-amazon.com/images/M/MV5BOTMyMjEyNzIzMV5BMl5BanBnXkFtZTgwNzIyNjU0NzE@._V1_SX300.jpg","imdbId":"tt2948356"},{"id":12,'Name':"Brad Pitt","title":"The Philadelphia Story","posterURL":"https://m.media-amazon.com/images/M/MV5BYjQ4ZDA4NGMtMTkwYi00NThiLThhZDUtZTEzNTAxOWYyY2E4XkEyXkFqcGdeQXVyMjUxODE0MDY@._V1_SX300.jpg","imdbId":"tt0032904"},{"id":13,'Name':"Brad Pitt","title":"Toy Story 2","posterURL":"https://m.media-amazon.com/images/M/MV5BMWM5ZDcxMTYtNTEyNS00MDRkLWI3YTItNThmMGExMWY4NDIwXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg","imdbId":"tt0120363"},{"id":14,'Name':"Brad Pitt","title":"Up","posterURL":"https://m.media-amazon.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_SX300.jpg","imdbId":"tt1049413"},{"id":15,'Name':"Brad Pitt","title":"Toy Story 3","posterURL":"https://m.media-amazon.com/images/M/MV5BMTgxOTY4Mjc0MF5BMl5BanBnXkFtZTcwNTA4MDQyMw@@._V1_SX300.jpg","imdbId":"tt0435761"},{"id":16,'Name':"Robert Di Niro","title":"Finding Nemo","posterURL":"https://m.media-amazon.com/images/M/MV5BZTAzNWZlNmUtZDEzYi00ZjA5LWIwYjEtZGM1NWE1MjE4YWRhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg","imdbId":"tt0266543"},{"id":17,'Name':"Robert Di Niro","title":"Three Billboards Outside Ebbing, Missouri","posterURL":"https://m.media-amazon.com/images/M/MV5BMjMxNzgwMDUyMl5BMl5BanBnXkFtZTgwMTQ0NTIyNDM@._V1_SX300.jpg","imdbId":"tt5027774"},{"id":18,'Name':"Robert Di Niro","title":"Kind Hearts and Coronets","posterURL":"https://m.media-amazon.com/images/M/MV5BNjI5N2Y4YWEtYThmOC00ODA0LTlhMGYtNmE3MmVmNjNhYWQyXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg","imdbId":"tt0041546"},{"id":19,'Name':"Robert Di Niro","title":"Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb","posterURL":"https://m.media-amazon.com/images/M/MV5BZWI3ZTMxNjctMjdlNS00NmUwLWFiM2YtZDUyY2I3N2MxYTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg","imdbId":"tt0057012"},{"id":20,'Name':"Robert Di Niro","title":"The Death of Stalin: Dictators, Murderers and Comrades... Oh My!","posterURL":"N/A","imdbId":"tt9019280"},{"id":21,'Name':"Tom Cruise","title":"Ant-Man and the Wasp","posterURL":"https://m.media-amazon.com/images/M/MV5BYjcyYTk0N2YtMzc4ZC00Y2E0LWFkNDgtNjE1MzZmMGE1YjY1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg","imdbId":"tt5095030"},{"id":22,'Name':"Tom Cruise","title":"Roman Holiday","posterURL":"https://m.media-amazon.com/images/M/MV5BMTE2MDM4MTMtZmNkZC00Y2QyLWE0YjUtMTAxZGJmODMxMDM0XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg","imdbId":"tt0046250"},{"id":23,'Name':"Tom Cruise","title":"Toy Story","posterURL":"https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg","imdbId":"tt0114709"},{"id":24,'Name':"Tom Cruise","title":"Crazy Rich Asians","posterURL":"https://m.media-amazon.com/images/M/MV5BMTYxNDMyOTAxN15BMl5BanBnXkFtZTgwMDg1ODYzNTM@._V1_SX300.jpg","imdbId":"tt3104988"},{"id":25,'Name':"Tom Cruise","title":"Paterson","posterURL":"https://m.media-amazon.com/images/M/MV5BMTUzODA4Nzk0OF5BMl5BanBnXkFtZTgwNzE1MDIwMDI@._V1_SX300.jpg","imdbId":"tt5247022"},{"id":26,'Name':"Chris Evans","title":"Sorry to Bother You","posterURL":"https://m.media-amazon.com/images/M/MV5BNjgwMmI4YzUtZGI2Mi00M2MwLWIyMmMtZWYzMWZmNzAyNmYwXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg","imdbId":"tt5688932"},{"id":27,'Name':"Chris Evans","title":"The Gold Rush","posterURL":"https://m.media-amazon.com/images/M/MV5BZjEyOTE4MzMtNmMzMy00Mzc3LWJlOTQtOGJiNDE0ZmJiOTU4L2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg","imdbId":"tt0015864"},{"id":28,'Name':"Chris Evans","title":"Monty Python and the Holy Grail","posterURL":"https://m.media-amazon.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg","imdbId":"tt0071853"},{"id":29,'Name':"Chris Evans","title":"The Disaster Artist","posterURL":"https://m.media-amazon.com/images/M/MV5BOGNkMzliMGMtMDI5Ni00OTZkLTgyMTYtNzk5ZTY1NjVhYjVmXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SX300.jpg","imdbId":"tt3521126"},{"id":30,'Name':"Chris Evans","title":"Shaun the Sheep Movie","posterURL":"https://m.media-amazon.com/images/M/MV5BOTc1ODY5MTQ1Nl5BMl5BanBnXkFtZTgwMDM5ODI1NjE@._V1_SX300.jpg","imdbId":"tt2872750"}],
+    actorname:'',
+    actorDetail:[],
+    searchitem:''
+}
+function reducer1(state=intialState,action:{type:string,payload:any}){
+
+    switch(action.type){
+        case "ALL_MOVIE_DATA":
+            return {...state,movies:action.payload}
+        case "NAME":
+            return {...state,name:action.payload}
+        case "MOVIE_DETAIL":
+            return {...state,detail:action.payload}
+        case "FEELING":
+            return {...state,feeling:action.payload}
+        case "ACTOR_NAME":
+            return {...state,actorname:action.payload}
+        case "ACTOR_DETAIL":
+            return {...state,actorDetail:action.payload}
+        case "SEARCH_ITEM" :
+            return {...state,searchitem:action.payload}
+        default :
+            return {...state}
+    }
+    
+}
+
+const Store=createStore(reducer1);
+export default Store
